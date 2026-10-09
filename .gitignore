@@ -1,0 +1,12 @@
+.library-helper/
+docs/source/
+*.zip
+*.xlsx
+.env
+__pycache__/
+*.sqlite
+.venv/
+app/build/
+app/.dart_tool/
+app/ios/Flutter/Generated.xcconfig
+app/ios/Flutter/flutter_export_environment.sh
