@@ -25,11 +25,13 @@ void main() {
     await tester.pumpAndSettle();
     await tester.enterText(find.byType(TextField), '4');
     await tester.tap(find.text('Проверить'));
-    await tester.pump();
+    await tester.pumpAndSettle();
+    await tester.drag(find.byType(ListView), const Offset(0, -200));
+    await tester.pumpAndSettle();
     expect(find.text('Попробуй ещё раз. Посчитай яблоки.'), findsOneWidget);
     await tester.enterText(find.byType(TextField), '5');
     await tester.tap(find.text('Проверить'));
-    await tester.pump();
+    await tester.pumpAndSettle();
     expect(find.text('Верно! Получилось 5 🎉'), findsOneWidget);
     await tester.tap(find.byIcon(Icons.arrow_back));
     await tester.pumpAndSettle();

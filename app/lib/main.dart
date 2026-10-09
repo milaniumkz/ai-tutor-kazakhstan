@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'design_tokens.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'tutor_repository.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized().ensureSemantics();
@@ -23,63 +23,135 @@ class DemoCapabilities implements LearningCapabilities {
 }
 
 class TutorApp extends StatefulWidget {
-  const TutorApp({super.key});
+  const TutorApp({super.key, this.repository});
+  final TutorRepository? repository;
   @override
   State<TutorApp> createState() => _TutorAppState();
 }
 
-class _TutorAppState extends State<TutorApp> {
+class _TutorAppState extends State<TutorApp> with WidgetsBindingObserver {
   bool checked = false, consent = false, completed = false, hint = false;
   int page = 0, lang = 0;
   String feedback = '';
   final answer = TextEditingController();
   String t(String ru, String kk, String en) => [ru, kk, en][lang];
+  late final TutorRepository repository;
+  bool busy = false;
+  String? error;
+  Map<String, dynamic> profile = demoProfile, lesson = demoLesson;
+  String get language => ['ru', 'kk', 'en'][lang];
+  String get name => profile['names'][language] as String;
+
   @override
   void initState() {
     super.initState();
-    restoreProgress();
+    WidgetsBinding.instance.addObserver(this);
+    repository = widget.repository ?? defaultRepository();
   }
 
-  Future<void> restoreProgress() async {
-    try {
-      final prefs = await SharedPreferences.getInstance();
-      if (mounted) {
-        setState(
-          () => completed = prefs.getBool('demo.addition.completed') ?? false,
+  String get unavailable => repository.usesServer
+      ? t(
+          'Сервер недоступен или вернул ошибку. Серверное сохранение не подтверждено. Повтори действие.',
+          'Сервер қолжетімсіз немесе қате қайтарды. Серверге сақтау расталмады. Қайта көр.',
+          'Server unavailable or returned an error. Server saving is not confirmed. Please retry.',
+        )
+      : t(
+          'Не удалось прочитать или сохранить прогресс на устройстве. Повтори действие.',
+          'Құрылғыдағы прогресті оқу немесе сақтау мүмкін болмады. Қайта көр.',
+          'Could not read or save on-device progress. Please retry.',
         );
-      }
+
+  Future<void> perform(Future<void> Function() action) async {
+    if (busy) return;
+    setState(() {
+      busy = true;
+      error = null;
+      feedback = '';
+    });
+    try {
+      await action();
     } catch (_) {
-      if (mounted) setState(() => feedback = 'Local storage unavailable');
+      if (mounted) setState(() => error = unavailable);
+    } finally {
+      if (mounted) setState(() => busy = false);
     }
   }
 
-  Future<void> saveProgress() async {
-    try {
-      final prefs = await SharedPreferences.getInstance();
-      await prefs.setBool('demo.addition.completed', true);
-    } catch (_) {
-      if (mounted) {
-        setState(
-          () => feedback = t(
-            'Не удалось сохранить прогресс',
-            'Прогресс сақталмады',
-            'Could not save progress',
-          ),
-        );
-      }
+  Future<void> start() => perform(() async {
+    final data = await repository.begin();
+    if (mounted) {
+      setState(() {
+        profile = data.profile;
+        lesson = data.lesson;
+        completed = data.completed;
+        consent = true;
+      });
     }
+  });
+
+  Future<void> go(int target) => perform(() async {
+    // Back and lesson navigation remain usable during a server outage.
+    if (target != 2 && mounted) setState(() => page = target);
+    final value = target == 2
+        ? await repository.parentProgress()
+        : await repository.progress();
+    if (mounted) {
+      setState(() {
+        completed = value;
+        page = target;
+      });
+    }
+  });
+
+  Future<void> submit() async {
+    final value = int.tryParse(answer.text.trim());
+    if (value == null || value < 0 || value > 20) {
+      setState(
+        () => feedback = t(
+          'Введи число от 0 до 20',
+          '0-ден 20-ға дейін сан енгіз',
+          'Enter a number from 0 to 20',
+        ),
+      );
+      return;
+    }
+    await perform(() async {
+      final result = await repository.attempt(value);
+      if (mounted) {
+        setState(() {
+          completed = result.completed;
+          feedback = result.correct
+              ? t(
+                  'Верно! Получилось 5 🎉',
+                  'Дұрыс! 5 болды 🎉',
+                  'Correct! That makes 5 🎉',
+                )
+              : t(
+                  'Попробуй ещё раз. Посчитай яблоки.',
+                  'Қайта көр. Алмаларды сана.',
+                  'Try again. Count the apples.',
+                );
+        });
+      }
+    });
+  }
+
+  @override
+  void didChangeMetrics() {
+    // Explicitly invalidate layout after a browser viewport change.
+    // Preserve the lesson, consent and input while the next frame uses new metrics.
+    if (mounted) setState(() {});
+    WidgetsBinding.instance.scheduleFrame();
   }
 
   @override
   void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
     answer.dispose();
+    repository.close();
     super.dispose();
   }
 
-  void go(int target) => setState(() {
-    page = target;
-    feedback = '';
-  });
   @override
   Widget build(BuildContext context) => MaterialApp(
     debugShowCheckedModeBanner: false,
@@ -103,7 +175,7 @@ class _TutorAppState extends State<TutorApp> {
         appBar: AppBar(
           leading: page > 0
               ? IconButton(
-                  onPressed: () => go(0),
+                  onPressed: busy ? null : () => go(0),
                   icon: const Icon(Icons.arrow_back),
                   tooltip: t('Назад', 'Артқа', 'Back'),
                 )
@@ -125,7 +197,7 @@ class _TutorAppState extends State<TutorApp> {
         bottomNavigationBar: consent
             ? NavigationBar(
                 selectedIndex: page == 2 ? 1 : 0,
-                onDestinationSelected: (v) => go(v == 1 ? 2 : 0),
+                onDestinationSelected: busy ? null : (v) => go(v == 1 ? 2 : 0),
                 destinations: [
                   NavigationDestination(
                     icon: const Icon(Icons.home_outlined),
@@ -154,6 +226,41 @@ class _TutorAppState extends State<TutorApp> {
                   ),
                   style: const TextStyle(color: Color(0xff6456d8)),
                 ),
+                const SizedBox(height: 8),
+                Text(
+                  repository.usesServer
+                      ? repository.storageMode == 'server-memory-demo'
+                            ? t(
+                                'Демо API • прогресс в памяти сервера, до перезапуска',
+                                'Демо API • прогресс сервер жадында, қайта іске қосқанша',
+                                'Demo API • progress in server memory, until restart',
+                              )
+                            : repository.storageMode == 'postgres-demo'
+                            ? t(
+                                'Демо API • PostgreSQL, только вымышленные данные',
+                                'Демо API • PostgreSQL, тек ойдан шығарылған деректер',
+                                'Demo API • PostgreSQL, synthetic data only',
+                              )
+                            : t(
+                                'Демо API • требуется подтверждение сервера',
+                                'Демо API • сервердің растауы қажет',
+                                'Demo API • server confirmation required',
+                              )
+                      : t(
+                          'Локальное демо • прогресс на устройстве',
+                          'Жергілікті демо • прогресс құрылғыда',
+                          'Local demo • on-device progress',
+                        ),
+                ),
+                if (busy) const LinearProgressIndicator(),
+                if (error != null)
+                  Semantics(
+                    liveRegion: true,
+                    child: Text(
+                      error!,
+                      style: const TextStyle(color: Colors.red),
+                    ),
+                  ),
                 const SizedBox(height: 24),
                 if (!consent) ...[
                   Text(
@@ -167,14 +274,16 @@ class _TutorAppState extends State<TutorApp> {
                   const SizedBox(height: 16),
                   Text(
                     t(
-                      'Этот учебный пример не отправляет голос, фотографии или данные ребёнка внешним AI-сервисам. Прогресс сохраняется на этом устройстве.',
-                      'Бұл оқу мысалы дауыс, фото немесе бала деректерін сыртқы AI қызметтеріне жібермейді. Прогресс осы құрылғыда сақталады.',
-                      'This learning demo sends no voice, photos or child data to external AI services. Progress is saved on this device.',
+                      'Этот учебный пример использует только вымышленный профиль и не отправляет голос или фотографии. Режим хранения указан выше.',
+                      'Бұл оқу мысалы тек ойдан шығарылған профильді қолданады, дауыс пен фото жібермейді. Сақтау режимі жоғарыда көрсетілген.',
+                      'This learning demo uses only a synthetic profile and sends no voice or photos. The storage mode is shown above.',
                     ),
                   ),
                   CheckboxListTile(
                     value: checked,
-                    onChanged: (v) => setState(() => checked = v!),
+                    onChanged: busy
+                        ? null
+                        : (v) => setState(() => checked = v!),
                     title: Text(
                       t(
                         'Я родитель и согласен начать демо',
@@ -184,25 +293,23 @@ class _TutorAppState extends State<TutorApp> {
                     ),
                   ),
                   FilledButton(
-                    onPressed: checked
-                        ? () => setState(() => consent = true)
-                        : null,
+                    onPressed: checked && !busy ? start : null,
                     child: Text(t('Начать', 'Бастау', 'Start')),
                   ),
                 ] else if (page == 0) ...[
                   Text(
                     t(
-                      'Привет, Алия! 👋',
-                      'Сәлем, Әлия! 👋',
-                      'Hello, Aliya! 👋',
+                      'Привет, $name! 👋',
+                      'Сәлем, $name! 👋',
+                      'Hello, $name! 👋',
                     ),
                     style: Theme.of(context).textTheme.headlineLarge,
                   ),
                   Text(
                     t(
-                      'Демо-профиль • 1 класс',
-                      'Демо-профиль • 1 сынып',
-                      'Demo profile • Grade 1',
+                      "Демо-профиль • ${profile['grade']} класс",
+                      "Демо-профиль • ${profile['grade']} сынып",
+                      "Demo profile • Grade ${profile['grade']}",
                     ),
                   ),
                   const SizedBox(height: 24),
@@ -225,7 +332,7 @@ class _TutorAppState extends State<TutorApp> {
                           ),
                           const SizedBox(height: 16),
                           FilledButton(
-                            onPressed: () => go(1),
+                            onPressed: busy ? null : () => go(1),
                             child: Text(t('Учиться', 'Үйрену', 'Learn')),
                           ),
                         ],
@@ -249,16 +356,12 @@ class _TutorAppState extends State<TutorApp> {
                     style: Theme.of(context).textTheme.headlineMedium,
                   ),
                   const SizedBox(height: 20),
-                  const Text(
-                    '🍎 🍎 🍎  +  🍎 🍎',
+                  Text(
+                    lesson['visual'] as String,
                     style: TextStyle(fontSize: 30),
                   ),
                   Text(
-                    t(
-                      '1. Было 3 яблока.\n2. Добавили ещё 2.\n3. Посчитай все яблоки.',
-                      '1. 3 алма болды.\n2. Тағы 2 алма қостық.\n3. Барлық алманы сана.',
-                      '1. Start with 3 apples.\n2. Add 2 more.\n3. Count all the apples.',
-                    ),
+                    lesson['explanations'][language] as String,
                     style: const TextStyle(fontSize: 22, height: 1.8),
                   ),
                   const SizedBox(height: 20),
@@ -266,38 +369,13 @@ class _TutorAppState extends State<TutorApp> {
                     controller: answer,
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(
-                      labelText: t('3 + 2 = ?', '3 + 2 = ?', '3 + 2 = ?'),
+                      labelText: lesson['question'] as String,
                       border: const OutlineInputBorder(),
                     ),
                   ),
                   const SizedBox(height: 16),
                   FilledButton(
-                    onPressed: () {
-                      final n = int.tryParse(answer.text.trim());
-                      setState(() {
-                        if (n == null || n < 0 || n > 20) {
-                          feedback = t(
-                            'Введи число от 0 до 20',
-                            '0-ден 20-ға дейін сан енгіз',
-                            'Enter a number from 0 to 20',
-                          );
-                        } else if (n == 5) {
-                          completed = true;
-                          saveProgress();
-                          feedback = t(
-                            'Верно! Получилось 5 🎉',
-                            'Дұрыс! 5 болды 🎉',
-                            'Correct! That makes 5 🎉',
-                          );
-                        } else {
-                          feedback = t(
-                            'Попробуй ещё раз. Посчитай яблоки.',
-                            'Қайта көр. Алмаларды сана.',
-                            'Try again. Count the apples.',
-                          );
-                        }
-                      });
-                    },
+                    onPressed: busy ? null : submit,
                     child: Text(t('Проверить', 'Тексеру', 'Check')),
                   ),
                   Semantics(
@@ -305,17 +383,10 @@ class _TutorAppState extends State<TutorApp> {
                     child: Text(feedback, style: const TextStyle(fontSize: 22)),
                   ),
                   TextButton(
-                    onPressed: () => setState(() => hint = true),
+                    onPressed: busy ? null : () => setState(() => hint = true),
                     child: Text(t('Подсказка', 'Көмек', 'Hint')),
                   ),
-                  if (hint)
-                    Text(
-                      t(
-                        'Начни с 3, затем скажи 4 и 5.',
-                        '3-тен баста, содан кейін 4 және 5 де.',
-                        'Start at 3, then say 4 and 5.',
-                      ),
-                    ),
+                  if (hint) Text(lesson['hints'][language] as String),
                 ] else ...[
                   Text(
                     t(
@@ -328,16 +399,16 @@ class _TutorAppState extends State<TutorApp> {
                   const SizedBox(height: 24),
                   Text(
                     t(
-                      'Алия • демо-профиль',
-                      'Әлия • демо-профиль',
-                      'Aliya • demo profile',
+                      '$name • демо-профиль',
+                      '$name • демо-профиль',
+                      '$name • demo profile',
                     ),
                   ),
                   Text(
                     "${t('Уроков завершено', 'Аяқталған сабақтар', 'Lessons completed')}: ${completed ? 1 : 0} / 1",
                     style: const TextStyle(fontSize: 26),
                   ),
-                  const Text('demo-synthetic-v1'),
+                  Text(lesson['curriculum'] as String),
                   Text(
                     t(
                       'AI, голос и OCR не подключены.',
