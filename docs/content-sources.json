@@ -1,0 +1,42 @@
+{
+  "sources": [
+    {
+      "id": "kz-goso-348",
+      "kind": "official_standard",
+      "url": "https://adilet.zan.kz/rus/docs/V2200029031",
+      "referenced_by": "AI_Repetitor_TZ_v1.pdf section 31",
+      "retrieved": false,
+      "verified_revision": null,
+      "status": "pending_network_access_and_methodological_review",
+      "coverage_claim": false
+    },
+    {
+      "id": "kz-curriculum-399",
+      "kind": "official_curriculum",
+      "url": "https://adilet.zan.kz/rus/docs/V2200029767",
+      "referenced_by": "AI_Repetitor_TZ_v1.pdf section 31",
+      "retrieved": false,
+      "verified_revision": null,
+      "status": "pending_network_access_and_methodological_review",
+      "coverage_claim": false
+    },
+    {
+      "id": "kz-programme-amendments",
+      "kind": "official_amendment",
+      "url": "https://old.adilet.zan.kz/rus/docs/V2400035339",
+      "referenced_by": "AI_Repetitor_TZ_v1.pdf section 31",
+      "retrieved": false,
+      "verified_revision": null,
+      "status": "pending_network_access_and_methodological_review",
+      "coverage_claim": false
+    }
+  ],
+  "publication_requirements": [
+    "verified_source_revision",
+    "academic_year_and_track",
+    "rights_record_for_instructional_assets",
+    "independent_methodological_review",
+    "language_review",
+    "deterministic_reference_answers"
+  ]
+}

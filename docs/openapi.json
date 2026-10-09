@@ -1,0 +1,1594 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "AI Репетитор engineering API",
+    "version": "0.3.0",
+    "description": "Persistent engineering API: family profiles, trial and pricing, reviewed versioned content, privacy jobs and learning evidence. External AI, payments and production authentication are not configured."
+  },
+  "servers": [
+    {
+      "url": "/v1"
+    }
+  ],
+  "paths": {
+    "/auth/register": {
+      "post": {
+        "summary": "Local engineering account; contact not verified",
+        "security": [],
+        "responses": {
+          "201": {
+            "description": "Success"
+          },
+          "default": {
+            "description": "Structured error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Register"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "summary": "Short-lived access token, 15 minutes",
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "default": {
+            "description": "Structured error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Login"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/children": {
+      "get": {
+        "summary": "Family profiles",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "default": {
+            "description": "Structured error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "X-Parent-Pin",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "post": {
+        "summary": "Create minimal profile",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "default": {
+            "description": "Structured error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "X-Parent-Pin",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Child"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/children/{child_id}/access": {
+      "post": {
+        "summary": "Issue child-scoped token",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "default": {
+            "description": "Structured error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "X-Parent-Pin",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "child_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Empty"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/consents": {
+      "get": {
+        "summary": "Latest decisions by purpose",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "default": {
+            "description": "Structured error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "X-Parent-Pin",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "post": {
+        "summary": "Append versioned consent event",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "default": {
+            "description": "Structured error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "X-Parent-Pin",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Consent"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/curriculum": {
+      "get": {
+        "summary": "Child-scoped engineering fixture, not official coverage",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "default": {
+            "description": "Structured error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/capabilities": {
+      "get": {
+        "summary": "External capabilities are not configured",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "default": {
+            "description": "Structured error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sessions": {
+      "post": {
+        "summary": "Start lesson, requires learning consent",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "default": {
+            "description": "Structured error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Start"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sessions/{session_id}": {
+      "get": {
+        "summary": "Get owned session with revision",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "default": {
+            "description": "Structured error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/sessions/{session_id}/attempts": {
+      "post": {
+        "summary": "Deduplicated attempt; key must equal client_event_id",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "default": {
+            "description": "Structured error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "If-Match",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Attempt"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/progress": {
+      "get": {
+        "summary": "Child-owned progress; parent must send PIN",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "default": {
+            "description": "Structured error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "child_id",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "X-Parent-Pin",
+            "in": "header",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/billing/quote": {
+      "post": {
+        "summary": "Quote per selected child; does not purchase access",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "default": {
+            "description": "Structured error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "X-Parent-Pin",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QuoteRequest"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/tariff": {
+      "get": {
+        "summary": "Administrator role and PIN required",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "default": {
+            "description": "Structured error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "X-Parent-Pin",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      },
+      "post": {
+        "summary": "Change tariff with revision and audit; administrator role required",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "default": {
+            "description": "Structured error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "X-Parent-Pin",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "If-Match",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Tariff"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/admin/tariff/audit": {
+      "get": {
+        "summary": "Latest 100 tariff changes; administrator only",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "default": {
+            "description": "Structured error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "X-Parent-Pin",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/sessions/{session_id}/pause": {
+      "post": {
+        "summary": "Pause owned session",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "default": {
+            "description": "Structured error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "If-Match",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Empty"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sessions/{session_id}/resume": {
+      "post": {
+        "summary": "Resume owned session",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "default": {
+            "description": "Structured error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "If-Match",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Empty"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sessions/{session_id}/cancel": {
+      "post": {
+        "summary": "Cancel owned session",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "default": {
+            "description": "Structured error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "If-Match",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Empty"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/logout": {
+      "post": {
+        "summary": "Revoke family sessions for adult, or current token for child",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Logged out"
+          },
+          "401": {
+            "description": "Invalid token"
+          }
+        }
+      }
+    },
+    "/billing/trial": {
+      "get": {
+        "summary": "Family trial status, also readable with child-scoped token",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Eligible, active or expired; duration and server expiry"
+          }
+        }
+      },
+      "post": {
+        "summary": "Activate the single family trial; explicit parent choice, no card or auto-renew",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "X-Parent-Pin",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Idempotency-Key",
+            "in": "header",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Trial activated or original operation retried without extension"
+          },
+          "403": {
+            "description": "Parent authorization or learning consent required"
+          },
+          "409": {
+            "description": "Trial already used"
+          }
+        }
+      }
+    },
+    "/privacy/reauth": {
+      "post": {
+        "summary": "Issue single-use session-bound adult password proof for export or deletion",
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Validation or missing proof"
+          },
+          "401": {
+            "description": "Authentication or reauthentication required"
+          },
+          "403": {
+            "description": "Insufficient scope or role"
+          }
+        }
+      }
+    },
+    "/privacy/exports": {
+      "post": {
+        "summary": "Queue scoped JSON export; parent PIN, password proof and Idempotency-Key required",
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Validation or missing proof"
+          },
+          "401": {
+            "description": "Authentication or reauthentication required"
+          },
+          "403": {
+            "description": "Insufficient scope or role"
+          }
+        }
+      }
+    },
+    "/privacy/deletions": {
+      "post": {
+        "summary": "Queue profile or family deletion; proof, DELETE confirmation and Idempotency-Key required",
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Validation or missing proof"
+          },
+          "401": {
+            "description": "Authentication or reauthentication required"
+          },
+          "403": {
+            "description": "Insufficient scope or role"
+          }
+        }
+      }
+    },
+    "/privacy/jobs": {
+      "get": {
+        "summary": "List only current family privacy jobs",
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Validation or missing proof"
+          },
+          "401": {
+            "description": "Authentication or reauthentication required"
+          },
+          "403": {
+            "description": "Insufficient scope or role"
+          }
+        }
+      }
+    },
+    "/privacy/jobs/{id}": {
+      "get": {
+        "summary": "Get owned job status",
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Validation or missing proof"
+          },
+          "401": {
+            "description": "Authentication or reauthentication required"
+          },
+          "403": {
+            "description": "Insufficient scope or role"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/privacy/jobs/{id}/download": {
+      "get": {
+        "summary": "Download owned export JSON within 24 hours; no-store",
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Validation or missing proof"
+          },
+          "401": {
+            "description": "Authentication or reauthentication required"
+          },
+          "403": {
+            "description": "Insufficient scope or role"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/privacy/receipts/{id}": {
+      "get": {
+        "summary": "Read minimal family deletion status using receipt bearer token after logout",
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Validation or missing proof"
+          },
+          "401": {
+            "description": "Authentication or reauthentication required"
+          },
+          "403": {
+            "description": "Insufficient scope or role"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/sessions/{id}/hints": {
+      "post": {
+        "summary": "Record a deduplicated server hint; If-Match and Idempotency-Key required",
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Validation or missing proof"
+          },
+          "401": {
+            "description": "Authentication or reauthentication required"
+          },
+          "403": {
+            "description": "Insufficient scope or role"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/admin/curriculum": {
+      "get": {
+        "summary": "Read sourced objectives requiring applicability review",
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Validation or missing proof"
+          },
+          "401": {
+            "description": "Authentication or reauthentication required"
+          },
+          "403": {
+            "description": "Insufficient scope or role"
+          }
+        }
+      }
+    },
+    "/admin/content": {
+      "get": {
+        "summary": "Read versioned content with RBAC",
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Validation or missing proof"
+          },
+          "401": {
+            "description": "Authentication or reauthentication required"
+          },
+          "403": {
+            "description": "Insufficient scope or role"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create immutable draft version; no automatic publication",
+        "responses": {
+          "200": {
+            "description": "Draft created"
+          }
+        }
+      }
+    },
+    "/admin/content/{id}": {
+      "get": {
+        "summary": "Read lesson version; editorial role and parent PIN required",
+        "responses": {
+          "200": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Validation or missing proof"
+          },
+          "401": {
+            "description": "Authentication or reauthentication required"
+          },
+          "403": {
+            "description": "Insufficient scope or role"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ]
+      }
+    },
+    "/admin/content/{id}/submit": {
+      "post": {
+        "summary": "Content submit with editorial RBAC and audit",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful transition"
+          },
+          "403": {
+            "description": "Independent role required"
+          },
+          "409": {
+            "description": "State/review/integrity conflict"
+          }
+        }
+      }
+    },
+    "/admin/content/{id}/review": {
+      "post": {
+        "summary": "Content review with editorial RBAC and audit",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful transition"
+          },
+          "403": {
+            "description": "Independent role required"
+          },
+          "409": {
+            "description": "State/review/integrity conflict"
+          }
+        }
+      }
+    },
+    "/admin/content/{id}/publish": {
+      "post": {
+        "summary": "Content publish with editorial RBAC and audit",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful transition"
+          },
+          "403": {
+            "description": "Independent role required"
+          },
+          "409": {
+            "description": "State/review/integrity conflict"
+          }
+        }
+      }
+    },
+    "/admin/content/{id}/retire": {
+      "post": {
+        "summary": "Content retire with editorial RBAC and audit",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful transition"
+          },
+          "403": {
+            "description": "Independent role required"
+          },
+          "409": {
+            "description": "State/review/integrity conflict"
+          }
+        }
+      }
+    },
+    "/admin/content/{id}/rollback": {
+      "post": {
+        "summary": "Content rollback with editorial RBAC and audit",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful transition"
+          },
+          "403": {
+            "description": "Independent role required"
+          },
+          "409": {
+            "description": "State/review/integrity conflict"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer"
+      }
+    },
+    "schemas": {
+      "Register": {
+        "type": "object",
+        "required": [
+          "login",
+          "password",
+          "pin"
+        ],
+        "properties": {
+          "login": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 80
+          },
+          "password": {
+            "type": "string",
+            "minLength": 10,
+            "maxLength": 128
+          },
+          "pin": {
+            "type": "string",
+            "pattern": "^[0-9]{6}$"
+          }
+        }
+      },
+      "Login": {
+        "type": "object",
+        "required": [
+          "login",
+          "password"
+        ],
+        "properties": {
+          "login": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        }
+      },
+      "Child": {
+        "type": "object",
+        "required": [
+          "nickname",
+          "grade",
+          "age_band",
+          "instruction_language",
+          "avatar"
+        ],
+        "properties": {
+          "nickname": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 30
+          },
+          "grade": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 4
+          },
+          "age_band": {
+            "type": "string",
+            "enum": [
+              "6-7",
+              "8-9",
+              "10-11"
+            ]
+          },
+          "instruction_language": {
+            "type": "string",
+            "enum": [
+              "ru-KZ",
+              "kk-KZ"
+            ]
+          },
+          "avatar": {
+            "type": "string",
+            "enum": [
+              "owl",
+              "fox",
+              "cat"
+            ]
+          }
+        }
+      },
+      "Consent": {
+        "type": "object",
+        "required": [
+          "purpose",
+          "version",
+          "granted"
+        ],
+        "properties": {
+          "purpose": {
+            "type": "string",
+            "enum": [
+              "learning",
+              "voice",
+              "photo",
+              "research"
+            ]
+          },
+          "version": {
+            "type": "string",
+            "enum": [
+              "engineering-v1"
+            ]
+          },
+          "granted": {
+            "type": "boolean"
+          }
+        }
+      },
+      "Start": {
+        "type": "object",
+        "required": [
+          "lesson_id"
+        ],
+        "properties": {
+          "lesson_id": {
+            "type": "string",
+            "enum": [
+              "engineering-addition-v1"
+            ]
+          }
+        }
+      },
+      "Attempt": {
+        "type": "object",
+        "required": [
+          "client_event_id",
+          "task_revision",
+          "step_id",
+          "input"
+        ],
+        "properties": {
+          "client_event_id": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120
+          },
+          "task_revision": {
+            "type": "integer"
+          },
+          "step_id": {
+            "type": "string"
+          },
+          "input": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string"
+              },
+              "value": {}
+            },
+            "required": [
+              "value"
+            ]
+          }
+        }
+      },
+      "QuoteRequest": {
+        "type": "object",
+        "required": [
+          "child_ids"
+        ],
+        "properties": {
+          "child_ids": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 5,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        }
+      },
+      "Tariff": {
+        "type": "object",
+        "required": [
+          "name",
+          "price_per_child_kzt",
+          "max_saved_profiles"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 80
+          },
+          "price_per_child_kzt": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 1000000
+          },
+          "max_saved_profiles": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 5
+          },
+          "revision": {
+            "type": "integer",
+            "readOnly": true
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "trial_days": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 30,
+            "default": 3
+          }
+        }
+      },
+      "Empty": {
+        "type": "object"
+      },
+      "Error": {
+        "type": "object",
+        "required": [
+          "error"
+        ],
+        "properties": {
+          "error": {
+            "type": "object",
+            "required": [
+              "code",
+              "message_key",
+              "retryable",
+              "request_id"
+            ],
+            "properties": {
+              "code": {
+                "type": "string"
+              },
+              "message_key": {
+                "type": "string"
+              },
+              "retryable": {
+                "type": "boolean"
+              },
+              "request_id": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,1509 @@
+{
+  "status": "draft_for_independent_review",
+  "lessons": [
+    {
+      "id": "original-math-g1-1-ru-KZ-v1",
+      "title": "Складываем две группы",
+      "locale": "ru-KZ",
+      "objective_id": "z5577:1.1.2.1",
+      "academic_year": "2026-2027",
+      "term": 2,
+      "explanation": "Сложение объединяет две группы. Начни с первого числа и добавь второе.",
+      "hint": "Разложи числа по разрядам. Складывай единицы с единицами, десятки с десятками.",
+      "steps": [
+        {
+          "question": "5 + 2 = ?",
+          "expression": {
+            "op": "add",
+            "left": 5,
+            "right": 2
+          },
+          "answer": 7,
+          "choices": [
+            6,
+            7,
+            8
+          ]
+        },
+        {
+          "question": "4 + 3 = ?",
+          "expression": {
+            "op": "add",
+            "left": 4,
+            "right": 3
+          },
+          "answer": 7,
+          "choices": [
+            6,
+            7,
+            8
+          ]
+        }
+      ],
+      "rights": {
+        "kind": "original",
+        "evidence": "Оригинальные тексты и упражнения, подготовленные для проекта по запросу владельца. Тексты и иллюстрации учебников не копировались."
+      },
+      "review_status": "draft",
+      "language_review": "pending",
+      "normative_applicability": "pending"
+    },
+    {
+      "id": "original-math-g1-1-kk-KZ-v1",
+      "title": "Екі топты қосамыз",
+      "locale": "kk-KZ",
+      "objective_id": "z5577:1.1.2.1",
+      "academic_year": "2026-2027",
+      "term": 2,
+      "explanation": "Қосу екі топты біріктіреді. Бірінші санға екінші санды қос.",
+      "hint": "Бірліктерді бірліктерге, ондықтарды ондықтарға қос.",
+      "steps": [
+        {
+          "question": "5 + 2 = ?",
+          "expression": {
+            "op": "add",
+            "left": 5,
+            "right": 2
+          },
+          "answer": 7,
+          "choices": [
+            6,
+            7,
+            8
+          ]
+        },
+        {
+          "question": "4 + 3 = ?",
+          "expression": {
+            "op": "add",
+            "left": 4,
+            "right": 3
+          },
+          "answer": 7,
+          "choices": [
+            6,
+            7,
+            8
+          ]
+        }
+      ],
+      "rights": {
+        "kind": "original",
+        "evidence": "Оригинальные тексты и упражнения, подготовленные для проекта по запросу владельца. Тексты и иллюстрации учебников не копировались."
+      },
+      "review_status": "draft",
+      "language_review": "pending",
+      "normative_applicability": "pending"
+    },
+    {
+      "id": "original-math-g1-2-ru-KZ-v1",
+      "title": "Находим, сколько осталось",
+      "locale": "ru-KZ",
+      "objective_id": "z5577:1.1.2.1",
+      "academic_year": "2026-2027",
+      "term": 2,
+      "explanation": "Вычитание показывает, сколько осталось. Из первого числа убери второе.",
+      "hint": "Разложи числа по разрядам. Проверь результат обратным действием — сложением.",
+      "steps": [
+        {
+          "question": "8 − 3 = ?",
+          "expression": {
+            "op": "subtract",
+            "left": 8,
+            "right": 3
+          },
+          "answer": 5,
+          "choices": [
+            4,
+            5,
+            6
+          ]
+        },
+        {
+          "question": "9 − 4 = ?",
+          "expression": {
+            "op": "subtract",
+            "left": 9,
+            "right": 4
+          },
+          "answer": 5,
+          "choices": [
+            4,
+            5,
+            6
+          ]
+        }
+      ],
+      "rights": {
+        "kind": "original",
+        "evidence": "Оригинальные тексты и упражнения, подготовленные для проекта по запросу владельца. Тексты и иллюстрации учебников не копировались."
+      },
+      "review_status": "draft",
+      "language_review": "pending",
+      "normative_applicability": "pending"
+    },
+    {
+      "id": "original-math-g1-2-kk-KZ-v1",
+      "title": "Қанша қалғанын табамыз",
+      "locale": "kk-KZ",
+      "objective_id": "z5577:1.1.2.1",
+      "academic_year": "2026-2027",
+      "term": 2,
+      "explanation": "Азайту қанша қалғанын көрсетеді. Бірінші саннан екінші санды азайт.",
+      "hint": "Сандарды разрядтарға жікте. Жауабыңды қосу арқылы тексер.",
+      "steps": [
+        {
+          "question": "8 − 3 = ?",
+          "expression": {
+            "op": "subtract",
+            "left": 8,
+            "right": 3
+          },
+          "answer": 5,
+          "choices": [
+            4,
+            5,
+            6
+          ]
+        },
+        {
+          "question": "9 − 4 = ?",
+          "expression": {
+            "op": "subtract",
+            "left": 9,
+            "right": 4
+          },
+          "answer": 5,
+          "choices": [
+            4,
+            5,
+            6
+          ]
+        }
+      ],
+      "rights": {
+        "kind": "original",
+        "evidence": "Оригинальные тексты и упражнения, подготовленные для проекта по запросу владельца. Тексты и иллюстрации учебников не копировались."
+      },
+      "review_status": "draft",
+      "language_review": "pending",
+      "normative_applicability": "pending"
+    },
+    {
+      "id": "original-math-g1-3-ru-KZ-v1",
+      "title": "Складываем две группы",
+      "locale": "ru-KZ",
+      "objective_id": "z5577:1.1.2.5",
+      "academic_year": "2026-2027",
+      "term": 2,
+      "explanation": "Сложение объединяет две группы. Начни с первого числа и добавь второе.",
+      "hint": "Разложи числа по разрядам. Складывай единицы с единицами, десятки с десятками.",
+      "steps": [
+        {
+          "question": "12 + 3 = ?",
+          "expression": {
+            "op": "add",
+            "left": 12,
+            "right": 3
+          },
+          "answer": 15,
+          "choices": [
+            14,
+            15,
+            16
+          ]
+        },
+        {
+          "question": "14 + 2 = ?",
+          "expression": {
+            "op": "add",
+            "left": 14,
+            "right": 2
+          },
+          "answer": 16,
+          "choices": [
+            15,
+            16,
+            17
+          ]
+        }
+      ],
+      "rights": {
+        "kind": "original",
+        "evidence": "Оригинальные тексты и упражнения, подготовленные для проекта по запросу владельца. Тексты и иллюстрации учебников не копировались."
+      },
+      "review_status": "draft",
+      "language_review": "pending",
+      "normative_applicability": "pending"
+    },
+    {
+      "id": "original-math-g1-3-kk-KZ-v1",
+      "title": "Екі топты қосамыз",
+      "locale": "kk-KZ",
+      "objective_id": "z5577:1.1.2.5",
+      "academic_year": "2026-2027",
+      "term": 2,
+      "explanation": "Қосу екі топты біріктіреді. Бірінші санға екінші санды қос.",
+      "hint": "Бірліктерді бірліктерге, ондықтарды ондықтарға қос.",
+      "steps": [
+        {
+          "question": "12 + 3 = ?",
+          "expression": {
+            "op": "add",
+            "left": 12,
+            "right": 3
+          },
+          "answer": 15,
+          "choices": [
+            14,
+            15,
+            16
+          ]
+        },
+        {
+          "question": "14 + 2 = ?",
+          "expression": {
+            "op": "add",
+            "left": 14,
+            "right": 2
+          },
+          "answer": 16,
+          "choices": [
+            15,
+            16,
+            17
+          ]
+        }
+      ],
+      "rights": {
+        "kind": "original",
+        "evidence": "Оригинальные тексты и упражнения, подготовленные для проекта по запросу владельца. Тексты и иллюстрации учебников не копировались."
+      },
+      "review_status": "draft",
+      "language_review": "pending",
+      "normative_applicability": "pending"
+    },
+    {
+      "id": "original-math-g1-4-ru-KZ-v1",
+      "title": "Находим, сколько осталось",
+      "locale": "ru-KZ",
+      "objective_id": "z5577:1.1.2.5",
+      "academic_year": "2026-2027",
+      "term": 2,
+      "explanation": "Вычитание показывает, сколько осталось. Из первого числа убери второе.",
+      "hint": "Разложи числа по разрядам. Проверь результат обратным действием — сложением.",
+      "steps": [
+        {
+          "question": "17 − 5 = ?",
+          "expression": {
+            "op": "subtract",
+            "left": 17,
+            "right": 5
+          },
+          "answer": 12,
+          "choices": [
+            11,
+            12,
+            13
+          ]
+        },
+        {
+          "question": "18 − 4 = ?",
+          "expression": {
+            "op": "subtract",
+            "left": 18,
+            "right": 4
+          },
+          "answer": 14,
+          "choices": [
+            13,
+            14,
+            15
+          ]
+        }
+      ],
+      "rights": {
+        "kind": "original",
+        "evidence": "Оригинальные тексты и упражнения, подготовленные для проекта по запросу владельца. Тексты и иллюстрации учебников не копировались."
+      },
+      "review_status": "draft",
+      "language_review": "pending",
+      "normative_applicability": "pending"
+    },
+    {
+      "id": "original-math-g1-4-kk-KZ-v1",
+      "title": "Қанша қалғанын табамыз",
+      "locale": "kk-KZ",
+      "objective_id": "z5577:1.1.2.5",
+      "academic_year": "2026-2027",
+      "term": 2,
+      "explanation": "Азайту қанша қалғанын көрсетеді. Бірінші саннан екінші санды азайт.",
+      "hint": "Сандарды разрядтарға жікте. Жауабыңды қосу арқылы тексер.",
+      "steps": [
+        {
+          "question": "17 − 5 = ?",
+          "expression": {
+            "op": "subtract",
+            "left": 17,
+            "right": 5
+          },
+          "answer": 12,
+          "choices": [
+            11,
+            12,
+            13
+          ]
+        },
+        {
+          "question": "18 − 4 = ?",
+          "expression": {
+            "op": "subtract",
+            "left": 18,
+            "right": 4
+          },
+          "answer": 14,
+          "choices": [
+            13,
+            14,
+            15
+          ]
+        }
+      ],
+      "rights": {
+        "kind": "original",
+        "evidence": "Оригинальные тексты и упражнения, подготовленные для проекта по запросу владельца. Тексты и иллюстрации учебников не копировались."
+      },
+      "review_status": "draft",
+      "language_review": "pending",
+      "normative_applicability": "pending"
+    },
+    {
+      "id": "original-math-g2-1-ru-KZ-v1",
+      "title": "Складываем две группы",
+      "locale": "ru-KZ",
+      "objective_id": "z5577:2.1.2.8",
+      "academic_year": "2026-2027",
+      "term": 2,
+      "explanation": "Сложение объединяет две группы. Начни с первого числа и добавь второе.",
+      "hint": "Разложи числа по разрядам. Складывай единицы с единицами, десятки с десятками.",
+      "steps": [
+        {
+          "question": "27 + 15 = ?",
+          "expression": {
+            "op": "add",
+            "left": 27,
+            "right": 15
+          },
+          "answer": 42,
+          "choices": [
+            41,
+            42,
+            43
+          ]
+        },
+        {
+          "question": "36 + 18 = ?",
+          "expression": {
+            "op": "add",
+            "left": 36,
+            "right": 18
+          },
+          "answer": 54,
+          "choices": [
+            53,
+            54,
+            55
+          ]
+        }
+      ],
+      "rights": {
+        "kind": "original",
+        "evidence": "Оригинальные тексты и упражнения, подготовленные для проекта по запросу владельца. Тексты и иллюстрации учебников не копировались."
+      },
+      "review_status": "draft",
+      "language_review": "pending",
+      "normative_applicability": "pending"
+    },
+    {
+      "id": "original-math-g2-1-kk-KZ-v1",
+      "title": "Екі топты қосамыз",
+      "locale": "kk-KZ",
+      "objective_id": "z5577:2.1.2.8",
+      "academic_year": "2026-2027",
+      "term": 2,
+      "explanation": "Қосу екі топты біріктіреді. Бірінші санға екінші санды қос.",
+      "hint": "Бірліктерді бірліктерге, ондықтарды ондықтарға қос.",
+      "steps": [
+        {
+          "question": "27 + 15 = ?",
+          "expression": {
+            "op": "add",
+            "left": 27,
+            "right": 15
+          },
+          "answer": 42,
+          "choices": [
+            41,
+            42,
+            43
+          ]
+        },
+        {
+          "question": "36 + 18 = ?",
+          "expression": {
+            "op": "add",
+            "left": 36,
+            "right": 18
+          },
+          "answer": 54,
+          "choices": [
+            53,
+            54,
+            55
+          ]
+        }
+      ],
+      "rights": {
+        "kind": "original",
+        "evidence": "Оригинальные тексты и упражнения, подготовленные для проекта по запросу владельца. Тексты и иллюстрации учебников не копировались."
+      },
+      "review_status": "draft",
+      "language_review": "pending",
+      "normative_applicability": "pending"
+    },
+    {
+      "id": "original-math-g2-2-ru-KZ-v1",
+      "title": "Находим, сколько осталось",
+      "locale": "ru-KZ",
+      "objective_id": "z5577:2.1.2.8",
+      "academic_year": "2026-2027",
+      "term": 2,
+      "explanation": "Вычитание показывает, сколько осталось. Из первого числа убери второе.",
+      "hint": "Разложи числа по разрядам. Проверь результат обратным действием — сложением.",
+      "steps": [
+        {
+          "question": "54 − 28 = ?",
+          "expression": {
+            "op": "subtract",
+            "left": 54,
+            "right": 28
+          },
+          "answer": 26,
+          "choices": [
+            25,
+            26,
+            27
+          ]
+        },
+        {
+          "question": "63 − 35 = ?",
+          "expression": {
+            "op": "subtract",
+            "left": 63,
+            "right": 35
+          },
+          "answer": 28,
+          "choices": [
+            27,
+            28,
+            29
+          ]
+        }
+      ],
+      "rights": {
+        "kind": "original",
+        "evidence": "Оригинальные тексты и упражнения, подготовленные для проекта по запросу владельца. Тексты и иллюстрации учебников не копировались."
+      },
+      "review_status": "draft",
+      "language_review": "pending",
+      "normative_applicability": "pending"
+    },
+    {
+      "id": "original-math-g2-2-kk-KZ-v1",
+      "title": "Қанша қалғанын табамыз",
+      "locale": "kk-KZ",
+      "objective_id": "z5577:2.1.2.8",
+      "academic_year": "2026-2027",
+      "term": 2,
+      "explanation": "Азайту қанша қалғанын көрсетеді. Бірінші саннан екінші санды азайт.",
+      "hint": "Сандарды разрядтарға жікте. Жауабыңды қосу арқылы тексер.",
+      "steps": [
+        {
+          "question": "54 − 28 = ?",
+          "expression": {
+            "op": "subtract",
+            "left": 54,
+            "right": 28
+          },
+          "answer": 26,
+          "choices": [
+            25,
+            26,
+            27
+          ]
+        },
+        {
+          "question": "63 − 35 = ?",
+          "expression": {
+            "op": "subtract",
+            "left": 63,
+            "right": 35
+          },
+          "answer": 28,
+          "choices": [
+            27,
+            28,
+            29
+          ]
+        }
+      ],
+      "rights": {
+        "kind": "original",
+        "evidence": "Оригинальные тексты и упражнения, подготовленные для проекта по запросу владельца. Тексты и иллюстрации учебников не копировались."
+      },
+      "review_status": "draft",
+      "language_review": "pending",
+      "normative_applicability": "pending"
+    },
+    {
+      "id": "original-math-g2-3-ru-KZ-v1",
+      "title": "Считаем равные группы",
+      "locale": "ru-KZ",
+      "objective_id": "z5577:2.1.2.4",
+      "academic_year": "2026-2027",
+      "term": 2,
+      "explanation": "Умножение помогает посчитать равные группы. Первое число показывает размер группы, второе — число групп.",
+      "hint": "Замени умножение сложением одинаковых слагаемых или разложи первое число по разрядам.",
+      "steps": [
+        {
+          "question": "3 × 4 = ?",
+          "expression": {
+            "op": "multiply",
+            "left": 3,
+            "right": 4
+          },
+          "answer": 12,
+          "choices": [
+            11,
+            12,
+            13
+          ]
+        },
+        {
+          "question": "4 × 5 = ?",
+          "expression": {
+            "op": "multiply",
+            "left": 4,
+            "right": 5
+          },
+          "answer": 20,
+          "choices": [
+            19,
+            20,
+            21
+          ]
+        }
+      ],
+      "rights": {
+        "kind": "original",
+        "evidence": "Оригинальные тексты и упражнения, подготовленные для проекта по запросу владельца. Тексты и иллюстрации учебников не копировались."
+      },
+      "review_status": "draft",
+      "language_review": "pending",
+      "normative_applicability": "pending"
+    },
+    {
+      "id": "original-math-g2-3-kk-KZ-v1",
+      "title": "Бірдей топтарды санаймыз",
+      "locale": "kk-KZ",
+      "objective_id": "z5577:2.1.2.4",
+      "academic_year": "2026-2027",
+      "term": 2,
+      "explanation": "Көбейту бірдей топтарды санауға көмектеседі. Бірінші сан — топтағы заттар саны, екінші сан — топтар саны.",
+      "hint": "Көбейтуді бірдей сандарды қосумен алмастыр немесе санды разрядтарға жікте.",
+      "steps": [
+        {
+          "question": "3 × 4 = ?",
+          "expression": {
+            "op": "multiply",
+            "left": 3,
+            "right": 4
+          },
+          "answer": 12,
+          "choices": [
+            11,
+            12,
+            13
+          ]
+        },
+        {
+          "question": "4 × 5 = ?",
+          "expression": {
+            "op": "multiply",
+            "left": 4,
+            "right": 5
+          },
+          "answer": 20,
+          "choices": [
+            19,
+            20,
+            21
+          ]
+        }
+      ],
+      "rights": {
+        "kind": "original",
+        "evidence": "Оригинальные тексты и упражнения, подготовленные для проекта по запросу владельца. Тексты и иллюстрации учебников не копировались."
+      },
+      "review_status": "draft",
+      "language_review": "pending",
+      "normative_applicability": "pending"
+    },
+    {
+      "id": "original-math-g2-4-ru-KZ-v1",
+      "title": "Делим на равные группы",
+      "locale": "ru-KZ",
+      "objective_id": "z5577:2.1.2.4",
+      "academic_year": "2026-2027",
+      "term": 2,
+      "explanation": "Деление помогает распределить количество поровну. Проверь ответ умножением.",
+      "hint": "Найди число, которое при умножении на делитель даёт исходное количество.",
+      "steps": [
+        {
+          "question": "12 ÷ 3 = ?",
+          "expression": {
+            "op": "divide",
+            "left": 12,
+            "right": 3
+          },
+          "answer": 4,
+          "choices": [
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "question": "20 ÷ 4 = ?",
+          "expression": {
+            "op": "divide",
+            "left": 20,
+            "right": 4
+          },
+          "answer": 5,
+          "choices": [
+            4,
+            5,
+            6
+          ]
+        }
+      ],
+      "rights": {
+        "kind": "original",
+        "evidence": "Оригинальные тексты и упражнения, подготовленные для проекта по запросу владельца. Тексты и иллюстрации учебников не копировались."
+      },
+      "review_status": "draft",
+      "language_review": "pending",
+      "normative_applicability": "pending"
+    },
+    {
+      "id": "original-math-g2-4-kk-KZ-v1",
+      "title": "Тең топтарға бөлеміз",
+      "locale": "kk-KZ",
+      "objective_id": "z5577:2.1.2.4",
+      "academic_year": "2026-2027",
+      "term": 2,
+      "explanation": "Бөлу заттарды тең бөлісуге көмектеседі. Жауабыңды көбейту арқылы тексер.",
+      "hint": "Бөлгішке көбейткенде бастапқы сан шығатын санды тап.",
+      "steps": [
+        {
+          "question": "12 ÷ 3 = ?",
+          "expression": {
+            "op": "divide",
+            "left": 12,
+            "right": 3
+          },
+          "answer": 4,
+          "choices": [
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "question": "20 ÷ 4 = ?",
+          "expression": {
+            "op": "divide",
+            "left": 20,
+            "right": 4
+          },
+          "answer": 5,
+          "choices": [
+            4,
+            5,
+            6
+          ]
+        }
+      ],
+      "rights": {
+        "kind": "original",
+        "evidence": "Оригинальные тексты и упражнения, подготовленные для проекта по запросу владельца. Тексты и иллюстрации учебников не копировались."
+      },
+      "review_status": "draft",
+      "language_review": "pending",
+      "normative_applicability": "pending"
+    },
+    {
+      "id": "original-math-g3-1-ru-KZ-v1",
+      "title": "Складываем две группы",
+      "locale": "ru-KZ",
+      "objective_id": "z5577:3.1.2.5",
+      "academic_year": "2026-2027",
+      "term": 2,
+      "explanation": "Сложение объединяет две группы. Начни с первого числа и добавь второе.",
+      "hint": "Разложи числа по разрядам. Складывай единицы с единицами, десятки с десятками.",
+      "steps": [
+        {
+          "question": "240 + 130 = ?",
+          "expression": {
+            "op": "add",
+            "left": 240,
+            "right": 130
+          },
+          "answer": 370,
+          "choices": [
+            369,
+            370,
+            371
+          ]
+        },
+        {
+          "question": "320 + 150 = ?",
+          "expression": {
+            "op": "add",
+            "left": 320,
+            "right": 150
+          },
+          "answer": 470,
+          "choices": [
+            469,
+            470,
+            471
+          ]
+        }
+      ],
+      "rights": {
+        "kind": "original",
+        "evidence": "Оригинальные тексты и упражнения, подготовленные для проекта по запросу владельца. Тексты и иллюстрации учебников не копировались."
+      },
+      "review_status": "draft",
+      "language_review": "pending",
+      "normative_applicability": "pending"
+    },
+    {
+      "id": "original-math-g3-1-kk-KZ-v1",
+      "title": "Екі топты қосамыз",
+      "locale": "kk-KZ",
+      "objective_id": "z5577:3.1.2.5",
+      "academic_year": "2026-2027",
+      "term": 2,
+      "explanation": "Қосу екі топты біріктіреді. Бірінші санға екінші санды қос.",
+      "hint": "Бірліктерді бірліктерге, ондықтарды ондықтарға қос.",
+      "steps": [
+        {
+          "question": "240 + 130 = ?",
+          "expression": {
+            "op": "add",
+            "left": 240,
+            "right": 130
+          },
+          "answer": 370,
+          "choices": [
+            369,
+            370,
+            371
+          ]
+        },
+        {
+          "question": "320 + 150 = ?",
+          "expression": {
+            "op": "add",
+            "left": 320,
+            "right": 150
+          },
+          "answer": 470,
+          "choices": [
+            469,
+            470,
+            471
+          ]
+        }
+      ],
+      "rights": {
+        "kind": "original",
+        "evidence": "Оригинальные тексты и упражнения, подготовленные для проекта по запросу владельца. Тексты и иллюстрации учебников не копировались."
+      },
+      "review_status": "draft",
+      "language_review": "pending",
+      "normative_applicability": "pending"
+    },
+    {
+      "id": "original-math-g3-2-ru-KZ-v1",
+      "title": "Находим, сколько осталось",
+      "locale": "ru-KZ",
+      "objective_id": "z5577:3.1.2.5",
+      "academic_year": "2026-2027",
+      "term": 2,
+      "explanation": "Вычитание показывает, сколько осталось. Из первого числа убери второе.",
+      "hint": "Разложи числа по разрядам. Проверь результат обратным действием — сложением.",
+      "steps": [
+        {
+          "question": "580 − 240 = ?",
+          "expression": {
+            "op": "subtract",
+            "left": 580,
+            "right": 240
+          },
+          "answer": 340,
+          "choices": [
+            339,
+            340,
+            341
+          ]
+        },
+        {
+          "question": "670 − 320 = ?",
+          "expression": {
+            "op": "subtract",
+            "left": 670,
+            "right": 320
+          },
+          "answer": 350,
+          "choices": [
+            349,
+            350,
+            351
+          ]
+        }
+      ],
+      "rights": {
+        "kind": "original",
+        "evidence": "Оригинальные тексты и упражнения, подготовленные для проекта по запросу владельца. Тексты и иллюстрации учебников не копировались."
+      },
+      "review_status": "draft",
+      "language_review": "pending",
+      "normative_applicability": "pending"
+    },
+    {
+      "id": "original-math-g3-2-kk-KZ-v1",
+      "title": "Қанша қалғанын табамыз",
+      "locale": "kk-KZ",
+      "objective_id": "z5577:3.1.2.5",
+      "academic_year": "2026-2027",
+      "term": 2,
+      "explanation": "Азайту қанша қалғанын көрсетеді. Бірінші саннан екінші санды азайт.",
+      "hint": "Сандарды разрядтарға жікте. Жауабыңды қосу арқылы тексер.",
+      "steps": [
+        {
+          "question": "580 − 240 = ?",
+          "expression": {
+            "op": "subtract",
+            "left": 580,
+            "right": 240
+          },
+          "answer": 340,
+          "choices": [
+            339,
+            340,
+            341
+          ]
+        },
+        {
+          "question": "670 − 320 = ?",
+          "expression": {
+            "op": "subtract",
+            "left": 670,
+            "right": 320
+          },
+          "answer": 350,
+          "choices": [
+            349,
+            350,
+            351
+          ]
+        }
+      ],
+      "rights": {
+        "kind": "original",
+        "evidence": "Оригинальные тексты и упражнения, подготовленные для проекта по запросу владельца. Тексты и иллюстрации учебников не копировались."
+      },
+      "review_status": "draft",
+      "language_review": "pending",
+      "normative_applicability": "pending"
+    },
+    {
+      "id": "original-math-g3-3-ru-KZ-v1",
+      "title": "Считаем равные группы",
+      "locale": "ru-KZ",
+      "objective_id": "z5577:3.1.2.7",
+      "academic_year": "2026-2027",
+      "term": 2,
+      "explanation": "Умножение помогает посчитать равные группы. Первое число показывает размер группы, второе — число групп.",
+      "hint": "Замени умножение сложением одинаковых слагаемых или разложи первое число по разрядам.",
+      "steps": [
+        {
+          "question": "23 × 3 = ?",
+          "expression": {
+            "op": "multiply",
+            "left": 23,
+            "right": 3
+          },
+          "answer": 69,
+          "choices": [
+            68,
+            69,
+            70
+          ]
+        },
+        {
+          "question": "32 × 2 = ?",
+          "expression": {
+            "op": "multiply",
+            "left": 32,
+            "right": 2
+          },
+          "answer": 64,
+          "choices": [
+            63,
+            64,
+            65
+          ]
+        }
+      ],
+      "rights": {
+        "kind": "original",
+        "evidence": "Оригинальные тексты и упражнения, подготовленные для проекта по запросу владельца. Тексты и иллюстрации учебников не копировались."
+      },
+      "review_status": "draft",
+      "language_review": "pending",
+      "normative_applicability": "pending"
+    },
+    {
+      "id": "original-math-g3-3-kk-KZ-v1",
+      "title": "Бірдей топтарды санаймыз",
+      "locale": "kk-KZ",
+      "objective_id": "z5577:3.1.2.7",
+      "academic_year": "2026-2027",
+      "term": 2,
+      "explanation": "Көбейту бірдей топтарды санауға көмектеседі. Бірінші сан — топтағы заттар саны, екінші сан — топтар саны.",
+      "hint": "Көбейтуді бірдей сандарды қосумен алмастыр немесе санды разрядтарға жікте.",
+      "steps": [
+        {
+          "question": "23 × 3 = ?",
+          "expression": {
+            "op": "multiply",
+            "left": 23,
+            "right": 3
+          },
+          "answer": 69,
+          "choices": [
+            68,
+            69,
+            70
+          ]
+        },
+        {
+          "question": "32 × 2 = ?",
+          "expression": {
+            "op": "multiply",
+            "left": 32,
+            "right": 2
+          },
+          "answer": 64,
+          "choices": [
+            63,
+            64,
+            65
+          ]
+        }
+      ],
+      "rights": {
+        "kind": "original",
+        "evidence": "Оригинальные тексты и упражнения, подготовленные для проекта по запросу владельца. Тексты и иллюстрации учебников не копировались."
+      },
+      "review_status": "draft",
+      "language_review": "pending",
+      "normative_applicability": "pending"
+    },
+    {
+      "id": "original-math-g3-4-ru-KZ-v1",
+      "title": "Делим на равные группы",
+      "locale": "ru-KZ",
+      "objective_id": "z5577:3.1.2.7",
+      "academic_year": "2026-2027",
+      "term": 2,
+      "explanation": "Деление помогает распределить количество поровну. Проверь ответ умножением.",
+      "hint": "Найди число, которое при умножении на делитель даёт исходное количество.",
+      "steps": [
+        {
+          "question": "84 ÷ 4 = ?",
+          "expression": {
+            "op": "divide",
+            "left": 84,
+            "right": 4
+          },
+          "answer": 21,
+          "choices": [
+            20,
+            21,
+            22
+          ]
+        },
+        {
+          "question": "96 ÷ 3 = ?",
+          "expression": {
+            "op": "divide",
+            "left": 96,
+            "right": 3
+          },
+          "answer": 32,
+          "choices": [
+            31,
+            32,
+            33
+          ]
+        }
+      ],
+      "rights": {
+        "kind": "original",
+        "evidence": "Оригинальные тексты и упражнения, подготовленные для проекта по запросу владельца. Тексты и иллюстрации учебников не копировались."
+      },
+      "review_status": "draft",
+      "language_review": "pending",
+      "normative_applicability": "pending"
+    },
+    {
+      "id": "original-math-g3-4-kk-KZ-v1",
+      "title": "Тең топтарға бөлеміз",
+      "locale": "kk-KZ",
+      "objective_id": "z5577:3.1.2.7",
+      "academic_year": "2026-2027",
+      "term": 2,
+      "explanation": "Бөлу заттарды тең бөлісуге көмектеседі. Жауабыңды көбейту арқылы тексер.",
+      "hint": "Бөлгішке көбейткенде бастапқы сан шығатын санды тап.",
+      "steps": [
+        {
+          "question": "84 ÷ 4 = ?",
+          "expression": {
+            "op": "divide",
+            "left": 84,
+            "right": 4
+          },
+          "answer": 21,
+          "choices": [
+            20,
+            21,
+            22
+          ]
+        },
+        {
+          "question": "96 ÷ 3 = ?",
+          "expression": {
+            "op": "divide",
+            "left": 96,
+            "right": 3
+          },
+          "answer": 32,
+          "choices": [
+            31,
+            32,
+            33
+          ]
+        }
+      ],
+      "rights": {
+        "kind": "original",
+        "evidence": "Оригинальные тексты и упражнения, подготовленные для проекта по запросу владельца. Тексты и иллюстрации учебников не копировались."
+      },
+      "review_status": "draft",
+      "language_review": "pending",
+      "normative_applicability": "pending"
+    },
+    {
+      "id": "original-math-g4-1-ru-KZ-v1",
+      "title": "Складываем две группы",
+      "locale": "ru-KZ",
+      "objective_id": "z5577:4.1.2.5",
+      "academic_year": "2026-2027",
+      "term": 2,
+      "explanation": "Сложение объединяет две группы. Начни с первого числа и добавь второе.",
+      "hint": "Разложи числа по разрядам. Складывай единицы с единицами, десятки с десятками.",
+      "steps": [
+        {
+          "question": "2400 + 1300 = ?",
+          "expression": {
+            "op": "add",
+            "left": 2400,
+            "right": 1300
+          },
+          "answer": 3700,
+          "choices": [
+            3699,
+            3700,
+            3701
+          ]
+        },
+        {
+          "question": "3200 + 1500 = ?",
+          "expression": {
+            "op": "add",
+            "left": 3200,
+            "right": 1500
+          },
+          "answer": 4700,
+          "choices": [
+            4699,
+            4700,
+            4701
+          ]
+        }
+      ],
+      "rights": {
+        "kind": "original",
+        "evidence": "Оригинальные тексты и упражнения, подготовленные для проекта по запросу владельца. Тексты и иллюстрации учебников не копировались."
+      },
+      "review_status": "draft",
+      "language_review": "pending",
+      "normative_applicability": "pending"
+    },
+    {
+      "id": "original-math-g4-1-kk-KZ-v1",
+      "title": "Екі топты қосамыз",
+      "locale": "kk-KZ",
+      "objective_id": "z5577:4.1.2.5",
+      "academic_year": "2026-2027",
+      "term": 2,
+      "explanation": "Қосу екі топты біріктіреді. Бірінші санға екінші санды қос.",
+      "hint": "Бірліктерді бірліктерге, ондықтарды ондықтарға қос.",
+      "steps": [
+        {
+          "question": "2400 + 1300 = ?",
+          "expression": {
+            "op": "add",
+            "left": 2400,
+            "right": 1300
+          },
+          "answer": 3700,
+          "choices": [
+            3699,
+            3700,
+            3701
+          ]
+        },
+        {
+          "question": "3200 + 1500 = ?",
+          "expression": {
+            "op": "add",
+            "left": 3200,
+            "right": 1500
+          },
+          "answer": 4700,
+          "choices": [
+            4699,
+            4700,
+            4701
+          ]
+        }
+      ],
+      "rights": {
+        "kind": "original",
+        "evidence": "Оригинальные тексты и упражнения, подготовленные для проекта по запросу владельца. Тексты и иллюстрации учебников не копировались."
+      },
+      "review_status": "draft",
+      "language_review": "pending",
+      "normative_applicability": "pending"
+    },
+    {
+      "id": "original-math-g4-2-ru-KZ-v1",
+      "title": "Находим, сколько осталось",
+      "locale": "ru-KZ",
+      "objective_id": "z5577:4.1.2.5",
+      "academic_year": "2026-2027",
+      "term": 2,
+      "explanation": "Вычитание показывает, сколько осталось. Из первого числа убери второе.",
+      "hint": "Разложи числа по разрядам. Проверь результат обратным действием — сложением.",
+      "steps": [
+        {
+          "question": "5800 − 2400 = ?",
+          "expression": {
+            "op": "subtract",
+            "left": 5800,
+            "right": 2400
+          },
+          "answer": 3400,
+          "choices": [
+            3399,
+            3400,
+            3401
+          ]
+        },
+        {
+          "question": "6700 − 3200 = ?",
+          "expression": {
+            "op": "subtract",
+            "left": 6700,
+            "right": 3200
+          },
+          "answer": 3500,
+          "choices": [
+            3499,
+            3500,
+            3501
+          ]
+        }
+      ],
+      "rights": {
+        "kind": "original",
+        "evidence": "Оригинальные тексты и упражнения, подготовленные для проекта по запросу владельца. Тексты и иллюстрации учебников не копировались."
+      },
+      "review_status": "draft",
+      "language_review": "pending",
+      "normative_applicability": "pending"
+    },
+    {
+      "id": "original-math-g4-2-kk-KZ-v1",
+      "title": "Қанша қалғанын табамыз",
+      "locale": "kk-KZ",
+      "objective_id": "z5577:4.1.2.5",
+      "academic_year": "2026-2027",
+      "term": 2,
+      "explanation": "Азайту қанша қалғанын көрсетеді. Бірінші саннан екінші санды азайт.",
+      "hint": "Сандарды разрядтарға жікте. Жауабыңды қосу арқылы тексер.",
+      "steps": [
+        {
+          "question": "5800 − 2400 = ?",
+          "expression": {
+            "op": "subtract",
+            "left": 5800,
+            "right": 2400
+          },
+          "answer": 3400,
+          "choices": [
+            3399,
+            3400,
+            3401
+          ]
+        },
+        {
+          "question": "6700 − 3200 = ?",
+          "expression": {
+            "op": "subtract",
+            "left": 6700,
+            "right": 3200
+          },
+          "answer": 3500,
+          "choices": [
+            3499,
+            3500,
+            3501
+          ]
+        }
+      ],
+      "rights": {
+        "kind": "original",
+        "evidence": "Оригинальные тексты и упражнения, подготовленные для проекта по запросу владельца. Тексты и иллюстрации учебников не копировались."
+      },
+      "review_status": "draft",
+      "language_review": "pending",
+      "normative_applicability": "pending"
+    },
+    {
+      "id": "original-math-g4-3-ru-KZ-v1",
+      "title": "Считаем равные группы",
+      "locale": "ru-KZ",
+      "objective_id": "z5577:4.1.2.7",
+      "academic_year": "2026-2027",
+      "term": 2,
+      "explanation": "Умножение помогает посчитать равные группы. Первое число показывает размер группы, второе — число групп.",
+      "hint": "Замени умножение сложением одинаковых слагаемых или разложи первое число по разрядам.",
+      "steps": [
+        {
+          "question": "125 × 3 = ?",
+          "expression": {
+            "op": "multiply",
+            "left": 125,
+            "right": 3
+          },
+          "answer": 375,
+          "choices": [
+            374,
+            375,
+            376
+          ]
+        },
+        {
+          "question": "240 × 4 = ?",
+          "expression": {
+            "op": "multiply",
+            "left": 240,
+            "right": 4
+          },
+          "answer": 960,
+          "choices": [
+            959,
+            960,
+            961
+          ]
+        }
+      ],
+      "rights": {
+        "kind": "original",
+        "evidence": "Оригинальные тексты и упражнения, подготовленные для проекта по запросу владельца. Тексты и иллюстрации учебников не копировались."
+      },
+      "review_status": "draft",
+      "language_review": "pending",
+      "normative_applicability": "pending"
+    },
+    {
+      "id": "original-math-g4-3-kk-KZ-v1",
+      "title": "Бірдей топтарды санаймыз",
+      "locale": "kk-KZ",
+      "objective_id": "z5577:4.1.2.7",
+      "academic_year": "2026-2027",
+      "term": 2,
+      "explanation": "Көбейту бірдей топтарды санауға көмектеседі. Бірінші сан — топтағы заттар саны, екінші сан — топтар саны.",
+      "hint": "Көбейтуді бірдей сандарды қосумен алмастыр немесе санды разрядтарға жікте.",
+      "steps": [
+        {
+          "question": "125 × 3 = ?",
+          "expression": {
+            "op": "multiply",
+            "left": 125,
+            "right": 3
+          },
+          "answer": 375,
+          "choices": [
+            374,
+            375,
+            376
+          ]
+        },
+        {
+          "question": "240 × 4 = ?",
+          "expression": {
+            "op": "multiply",
+            "left": 240,
+            "right": 4
+          },
+          "answer": 960,
+          "choices": [
+            959,
+            960,
+            961
+          ]
+        }
+      ],
+      "rights": {
+        "kind": "original",
+        "evidence": "Оригинальные тексты и упражнения, подготовленные для проекта по запросу владельца. Тексты и иллюстрации учебников не копировались."
+      },
+      "review_status": "draft",
+      "language_review": "pending",
+      "normative_applicability": "pending"
+    },
+    {
+      "id": "original-math-g4-4-ru-KZ-v1",
+      "title": "Делим на равные группы",
+      "locale": "ru-KZ",
+      "objective_id": "z5577:4.1.2.7",
+      "academic_year": "2026-2027",
+      "term": 2,
+      "explanation": "Деление помогает распределить количество поровну. Проверь ответ умножением.",
+      "hint": "Найди число, которое при умножении на делитель даёт исходное количество.",
+      "steps": [
+        {
+          "question": "840 ÷ 4 = ?",
+          "expression": {
+            "op": "divide",
+            "left": 840,
+            "right": 4
+          },
+          "answer": 210,
+          "choices": [
+            209,
+            210,
+            211
+          ]
+        },
+        {
+          "question": "960 ÷ 3 = ?",
+          "expression": {
+            "op": "divide",
+            "left": 960,
+            "right": 3
+          },
+          "answer": 320,
+          "choices": [
+            319,
+            320,
+            321
+          ]
+        }
+      ],
+      "rights": {
+        "kind": "original",
+        "evidence": "Оригинальные тексты и упражнения, подготовленные для проекта по запросу владельца. Тексты и иллюстрации учебников не копировались."
+      },
+      "review_status": "draft",
+      "language_review": "pending",
+      "normative_applicability": "pending"
+    },
+    {
+      "id": "original-math-g4-4-kk-KZ-v1",
+      "title": "Тең топтарға бөлеміз",
+      "locale": "kk-KZ",
+      "objective_id": "z5577:4.1.2.7",
+      "academic_year": "2026-2027",
+      "term": 2,
+      "explanation": "Бөлу заттарды тең бөлісуге көмектеседі. Жауабыңды көбейту арқылы тексер.",
+      "hint": "Бөлгішке көбейткенде бастапқы сан шығатын санды тап.",
+      "steps": [
+        {
+          "question": "840 ÷ 4 = ?",
+          "expression": {
+            "op": "divide",
+            "left": 840,
+            "right": 4
+          },
+          "answer": 210,
+          "choices": [
+            209,
+            210,
+            211
+          ]
+        },
+        {
+          "question": "960 ÷ 3 = ?",
+          "expression": {
+            "op": "divide",
+            "left": 960,
+            "right": 3
+          },
+          "answer": 320,
+          "choices": [
+            319,
+            320,
+            321
+          ]
+        }
+      ],
+      "rights": {
+        "kind": "original",
+        "evidence": "Оригинальные тексты и упражнения, подготовленные для проекта по запросу владельца. Тексты и иллюстрации учебников не копировались."
+      },
+      "review_status": "draft",
+      "language_review": "pending",
+      "normative_applicability": "pending"
+    }
+  ]
+}
