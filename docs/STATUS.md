@@ -29,3 +29,7 @@ No official curriculum claims, no copyrighted textbooks, no real child data.
 Public safety: source ZIP, finances, helpers, generated local configuration and signing
 team identifiers excluded. No workflows/runners enabled. Initial public history contains
 only the new project. Pattern scan found no common API/GitHub token strings in staged code.
+
+Final browser persistence check passed: completed lesson on 390x844 viewport, parent summary
+showed 1/1; reload returned to unchecked consent; consenting again restored completed 1/1.
+Parent mobile screenshot was visually inspected and has no clipping.
