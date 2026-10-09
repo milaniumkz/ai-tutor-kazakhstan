@@ -139,9 +139,10 @@ class Handler(BaseHTTPRequestHandler):
             if not isinstance(data, dict):
                 raise ValueError("Object required")
             if self.path == "/api/consent":
-                store.accept(data.get("accepted"))
                 if len(sessions) >= 100:
-                    sessions.clear()
+                    self.reply(503, {"error": "Demo session capacity reached"})
+                    return
+                store.accept(data.get("accepted"))
                 token = secrets.token_urlsafe(24)
                 sessions.add(token)
                 self.reply(200, {"accepted": True, "session": token, "demo": True, "storage": storage_kind()})

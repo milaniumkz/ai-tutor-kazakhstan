@@ -2,6 +2,10 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
+class DemoSessionExpired implements Exception {
+  const DemoSessionExpired();
+}
+
 class TutorData {
   const TutorData({
     required this.profile,
@@ -126,6 +130,12 @@ class HttpTutorRepository implements TutorRepository {
                     body: jsonEncode(body),
                   ))
             .timeout(const Duration(seconds: 4));
+    if (response.statusCode == 403 &&
+        session != null &&
+        path != '/api/consent') {
+      session = null;
+      throw const DemoSessionExpired();
+    }
     if (response.statusCode != 200) {
       throw StateError('Demo API request failed (${response.statusCode})');
     }

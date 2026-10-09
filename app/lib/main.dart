@@ -70,6 +70,21 @@ class _TutorAppState extends State<TutorApp> with WidgetsBindingObserver {
     });
     try {
       await action();
+    } on DemoSessionExpired {
+      if (mounted) {
+        setState(() {
+          consent = false;
+          checked = false;
+          page = 0;
+          hint = false;
+          answer.clear();
+          error = t(
+            'Демо-сессия истекла. Подтверди согласие заново. Прогресс в памяти сервера теряется при его перезапуске.',
+            'Демо сессия аяқталды. Келісімді қайта раста. Сервер қайта іске қосылғанда жадтағы прогресс жоғалады.',
+            'Demo session expired. Please give consent again. Server-memory progress is lost when the server restarts.',
+          );
+        });
+      }
     } catch (_) {
       if (mounted) setState(() => error = unavailable);
     } finally {

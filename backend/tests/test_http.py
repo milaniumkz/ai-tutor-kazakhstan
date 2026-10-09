@@ -72,3 +72,17 @@ class HttpFlowTests(unittest.TestCase):
         status, data, _ = self.request('/api/attempt', {'answer': 5}, token)
         self.assertEqual(status, 503)
         self.assertNotIn('completed', data)
+    def test_server_restart_requires_fresh_consent(self):
+        token = self.consent()
+        self.request('/api/attempt', {'answer': 5}, token)
+        server.store = server.Store()
+        server.sessions.clear()  # Same state change as a process restart.
+        self.assertEqual(self.request('/api/progress', token=token)[0], 403)
+        new_token = self.consent()
+        self.assertNotEqual(token, new_token)
+        self.assertEqual(self.request('/api/progress', token=new_token)[1]['completed'], 0)
+    def test_capacity_keeps_existing_sessions(self):
+        token = self.consent()
+        server.sessions.update('synthetic-session-' + str(i) for i in range(99))
+        self.assertEqual(self.request('/api/consent', {'accepted': True})[0], 503)
+        self.assertEqual(self.request('/api/profile', token=token)[0], 200)
